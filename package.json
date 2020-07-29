@@ -1,0 +1,57 @@
+{
+  "name": "antbear",
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "https://sapegin.me"
+  },
+  "homepage": "https://github.com/sapegin/antbear",
+  "repository": "sapegin/antbear",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint . --cache --fix",
+    "pretest": "npm run lint",
+    "format": "prettier --loglevel warn --write \"**/*.{js,md}\"",
+    "posttest": "npm run format",
+    "test:jest": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test": "npm run test:jest --"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-flow": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "acorn": "^7.3.1",
+    "estree-walker": "^2.0.1",
+    "lodash": "^4.17.19",
+    "stylis": "^4.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-tamia": "^7.2.5",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,md}": "prettier --write"
+  }
+}
