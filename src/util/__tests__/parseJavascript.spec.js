@@ -5,7 +5,8 @@ test('HTML element, object notation', () => {
 		`
 import styled from 'styled-components';
 const BoldParagraph = styled.p({
-	fontWeight: 'bold'
+	margin: 0,
+	fontWeight: 'bold',
 })
 	`,
 		'test.js'
@@ -15,6 +16,10 @@ const BoldParagraph = styled.p({
 		  Object {
 		    "component": "p",
 		    "styles": Array [
+		      Object {
+		        "name": "margin",
+		        "value": 0,
+		      },
 		      Object {
 		        "name": "font-weight",
 		        "value": "bold",

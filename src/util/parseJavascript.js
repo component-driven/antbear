@@ -40,7 +40,8 @@ function getPropertyKey(node) {
 
 function getValue(node, code, propsObjectName) {
 	// { color: 'salmon' }
-	if (node.type === 'StringLiteral') {
+	// { margin: 0 }
+	if (node.type === 'StringLiteral' || node.type === 'NumericLiteral') {
 		return node.value;
 	}
 
