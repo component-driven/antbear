@@ -2,6 +2,7 @@ const babel = require('@babel/core');
 
 const BABEL_OPTIONS = {
 	presets: ['@babel/typescript', '@babel/flow', '@babel/react'],
+	plugins: ['@babel/plugin-proposal-class-properties'],
 	babelrc: false,
 	configFile: false,
 	ast: true,

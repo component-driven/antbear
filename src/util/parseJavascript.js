@@ -130,7 +130,7 @@ function getCssFromQuasi({ quasi: { quasis, expressions } }, code) {
  * @return {object}
  */
 module.exports.parseJavaScript = function (source, filename) {
-	const { code, ast } = compileCode(source, filename);
+	const { ast } = compileCode(source, filename);
 
 	const instances = [];
 
