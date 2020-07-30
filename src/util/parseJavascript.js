@@ -69,6 +69,14 @@ function getValue(node, code, propsObjectName) {
 		return normalizeExpression(getThemeToken(node, code, propsObjectName));
 	}
 
+	// { margin: -props.theme.space.m }
+	if (node.type === 'UnaryExpression') {
+		return [
+			node.operator,
+			normalizeExpression(getThemeToken(node.argument, code, propsObjectName)),
+		].join('');
+	}
+
 	console.warn('Can’t find value for', node);
 
 	return '';

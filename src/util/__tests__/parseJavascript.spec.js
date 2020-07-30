@@ -200,6 +200,32 @@ const PrimaryHeading = styled.h1(props => ({
 	`);
 });
 
+test('HTML element, object notation as function, negative value from theme', () => {
+	const result = parseJavaScript(
+		`
+import styled from 'styled-components';
+const Card = styled.div(props => ({
+	marginLeft: -props.theme.space.m
+}))
+	`,
+		'test.js'
+	);
+	expect(result).toMatchInlineSnapshot(`
+		Array [
+		  Object {
+		    "component": "div",
+		    "filename": "test.js",
+		    "styles": Array [
+		      Object {
+		        "name": "margin-left",
+		        "value": "-(theme.space.m)",
+		      },
+		    ],
+		  },
+		]
+	`);
+});
+
 test('HTML element, template literal', () => {
 	const result = parseJavaScript(
 		`
