@@ -4,6 +4,8 @@ const { compile, serialize, middleware } = require('stylis');
 const cssShorthandExpand = require('css-shorthand-expand');
 const { compileCode } = require('./compileCode');
 
+const EXPRESSION_PLACEHOLDER = '$EXPRESSION$';
+
 function getComponentName(node) {
 	// styled.p()
 	if (node.type === 'CallExpression') {
@@ -48,7 +50,7 @@ function getValue(node, code, propsObjectName) {
 
 	// { width: SIZE }
 	if (node.type === 'Identifier') {
-		return node.name;
+		return normalizeExpression(node.name);
 	}
 
 	if (node.type === 'ArrowFunctionExpression') {
@@ -64,7 +66,7 @@ function getValue(node, code, propsObjectName) {
 
 	// { color: props.theme.colors.primary }
 	if (node.type === 'MemberExpression') {
-		return getThemeToken(node, code, propsObjectName);
+		return normalizeExpression(getThemeToken(node, code, propsObjectName));
 	}
 
 	console.warn('Can’t find value for', node);
@@ -167,7 +169,7 @@ function getCssFromQuasi({ quasi: { quasis, expressions } }, code) {
 	return quasis.reduce((css, quasi, index) => {
 		css += quasi.value.raw;
 		if (expressions[index]) {
-			css += normalizeExpression(getValue(expressions[index], code));
+			css += getValue(expressions[index], code);
 		}
 		return css;
 	}, '');
@@ -176,7 +178,7 @@ function getCssFromQuasi({ quasi: { quasis, expressions } }, code) {
 // Don’t keep complex expression because they break Stylis,
 // and not very useful to analyze anyway
 function normalizeExpression(value) {
-	return value.match(/[:`]/) ? '(Expression)' : value;
+	return value.match(/[:`]/) ? EXPRESSION_PLACEHOLDER : `(${value})`;
 }
 
 /**

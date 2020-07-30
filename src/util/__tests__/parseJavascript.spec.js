@@ -88,7 +88,7 @@ const PrimaryHeading = styled.h1({
 		    "styles": Array [
 		      Object {
 		        "name": "width",
-		        "value": "SIZE",
+		        "value": "(SIZE)",
 		      },
 		    ],
 		  },
@@ -114,7 +114,7 @@ const PrimaryHeading = styled.h1({
 		    "styles": Array [
 		      Object {
 		        "name": "color",
-		        "value": "theme.colors.primary",
+		        "value": "(theme.colors.primary)",
 		      },
 		    ],
 		  },
@@ -140,7 +140,7 @@ const BoldParagraph = styled(Text)({
 		    "styles": Array [
 		      Object {
 		        "name": "font-weight",
-		        "value": "(Expression)",
+		        "value": "$EXPRESSION$",
 		      },
 		    ],
 		  },
@@ -166,7 +166,7 @@ const BoldParagraph = styled(Text)({
 		    "styles": Array [
 		      Object {
 		        "name": "font-weight",
-		        "value": "(Expression)",
+		        "value": "$EXPRESSION$",
 		      },
 		    ],
 		  },
@@ -192,7 +192,7 @@ const PrimaryHeading = styled.h1(props => ({
 		    "styles": Array [
 		      Object {
 		        "name": "color",
-		        "value": "theme.colors.primary",
+		        "value": "(theme.colors.primary)",
 		      },
 		    ],
 		  },
@@ -275,7 +275,7 @@ const PrimaryHeading = styled.h1\`
 		    "styles": Array [
 		      Object {
 		        "name": "color",
-		        "value": "theme.colors.primary",
+		        "value": "(theme.colors.primary)",
 		      },
 		    ],
 		  },
