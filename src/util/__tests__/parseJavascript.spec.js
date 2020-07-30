@@ -122,6 +122,58 @@ const PrimaryHeading = styled.h1({
 	`);
 });
 
+test('custom component, object notation, complex expression', () => {
+	const result = parseJavaScript(
+		`
+import styled from 'styled-components';
+const BoldParagraph = styled(Text)({
+	fontWeight: () => true ? 'bold' : 'normal'
+})
+	`,
+		'test.js'
+	);
+	expect(result).toMatchInlineSnapshot(`
+		Array [
+		  Object {
+		    "component": "Text",
+		    "filename": "test.js",
+		    "styles": Array [
+		      Object {
+		        "name": "font-weight",
+		        "value": "(Expression)",
+		      },
+		    ],
+		  },
+		]
+	`);
+});
+
+test('custom component, object notation, complex expression 2', () => {
+	const result = parseJavaScript(
+		`
+import styled from 'styled-components';
+const BoldParagraph = styled(Text)({
+	fontWeight: (props) => props.bold ? 'bold' : 'normal'
+})
+	`,
+		'test.js'
+	);
+	expect(result).toMatchInlineSnapshot(`
+		Array [
+		  Object {
+		    "component": "Text",
+		    "filename": "test.js",
+		    "styles": Array [
+		      Object {
+		        "name": "font-weight",
+		        "value": "(Expression)",
+		      },
+		    ],
+		  },
+		]
+	`);
+});
+
 test('HTML element, object notation as function', () => {
 	const result = parseJavaScript(
 		`

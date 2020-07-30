@@ -51,9 +51,15 @@ function getValue(node, code, propsObjectName) {
 		return node.name;
 	}
 
-	// { color: props => props.theme.colors.primary }
-	if (node.type === 'ArrowFunctionExpression' && node.params.length === 1) {
-		return getThemeToken(node.body, code, node.params[0].name);
+	if (node.type === 'ArrowFunctionExpression') {
+		// { color: props => props.theme.colors.primary }
+		return normalizeExpression(
+			getThemeToken(
+				node.body,
+				code,
+				node.params.length === 1 ? node.params[0].name : ''
+			)
+		);
 	}
 
 	// { color: props.theme.colors.primary }
@@ -141,10 +147,16 @@ function getCssFromQuasi({ quasi: { quasis, expressions } }, code) {
 	return quasis.reduce((css, quasi, index) => {
 		css += quasi.value.raw;
 		if (expressions[index]) {
-			css += getValue(expressions[index], code);
+			css += normalizeExpression(getValue(expressions[index], code));
 		}
 		return css;
 	}, '');
+}
+
+// Don’t keep complex expression because they break Stylis,
+// and not very useful to analyze anyway
+function normalizeExpression(value) {
+	return value.match(/[:`]/) ? '(Expression)' : value;
 }
 
 /**
