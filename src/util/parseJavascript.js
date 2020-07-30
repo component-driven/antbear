@@ -131,6 +131,26 @@ function normalizeCssProp(rawProp, rawValue) {
 }
 
 function expandCssProp(rawProp, rawValue) {
+	// Do not expand these props
+	if (
+		[
+			'border',
+			'border-width',
+			'border-style',
+			'border-color',
+			'border-top',
+			'border-right',
+			'border-bottom',
+			'border-left',
+			'border-radius',
+			'outline',
+		].includes(rawProp)
+	) {
+		return {
+			[rawProp]: rawValue,
+		};
+	}
+
 	try {
 		return (
 			cssShorthandExpand(rawProp, rawValue) || {
