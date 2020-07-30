@@ -32,7 +32,6 @@
     "@babel/preset-flow": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
-    "acorn": "^7.3.1",
     "estree-walker": "^2.0.1",
     "lodash": "^4.17.19",
     "stylis": "^4.0.2"

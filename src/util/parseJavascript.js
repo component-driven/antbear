@@ -2,7 +2,6 @@ const { kebabCase } = require('lodash');
 const { walk } = require('estree-walker');
 const { compile, serialize, middleware } = require('stylis');
 const { compileCode } = require('./compileCode');
-const { getAst } = require('./getAst');
 
 function getComponentName(node) {
 	// styled.p()
@@ -41,7 +40,7 @@ function getPropertyKey(node) {
 
 function getValue(node, code, propsObjectName) {
 	// { color: 'salmon' }
-	if (node.type === 'Literal') {
+	if (node.type === 'StringLiteral') {
 		return node.value;
 	}
 
@@ -130,13 +129,8 @@ function getCssFromQuasi({ quasi: { quasis, expressions } }, code) {
  * @param {string} filename
  * @return {object}
  */
-module.exports.parseJavaScript = function (code, filename) {
-	const compiledCode = compileCode(code, filename);
-
-	const ast = getAst(compiledCode);
-	if (!ast) {
-		return [];
-	}
+module.exports.parseJavaScript = function (source, filename) {
+	const { code, ast } = compileCode(source, filename);
 
 	const instances = [];
 
@@ -153,7 +147,7 @@ module.exports.parseJavaScript = function (code, filename) {
 					(callee.type === 'Identifier' && callee.name === 'styled')
 				) {
 					const component = (args[0] && args[0].name) || getComponentName(node);
-					const styles = getStyles(node, compiledCode);
+					const styles = getStyles(node, source);
 					instances.push({ component, styles });
 				}
 			}
