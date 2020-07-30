@@ -12,9 +12,11 @@
   "engines": {
     "node": ">=10"
   },
-  "main": "index.js",
+  "main": "src/index.js",
+  "bin": "bin/antbear.js",
   "files": [
-    "index.js"
+    "src",
+    "bin"
   ],
   "scripts": {
     "lint": "eslint . --cache --fix",
@@ -29,11 +31,15 @@
   "keywords": [],
   "dependencies": {
     "@babel/core": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-flow": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
     "estree-walker": "^2.0.1",
+    "glob": "^7.1.6",
+    "kleur": "^4.0.2",
     "lodash": "^4.17.19",
+    "minimist": "^1.2.5",
     "stylis": "^4.0.2"
   },
   "devDependencies": {
