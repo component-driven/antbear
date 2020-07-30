@@ -69,6 +69,33 @@ const BoldParagraph = styled(Text)({
 	`);
 });
 
+test('HTML element, object notation, variable', () => {
+	const result = parseJavaScript(
+		`
+import styled from 'styled-components';
+const SIZE = '1rem';
+const PrimaryHeading = styled.h1({
+	width: SIZE
+})
+	`,
+		'test.js'
+	);
+	expect(result).toMatchInlineSnapshot(`
+		Array [
+		  Object {
+		    "component": "h1",
+		    "filename": "test.js",
+		    "styles": Array [
+		      Object {
+		        "name": "width",
+		        "value": "SIZE",
+		      },
+		    ],
+		  },
+		]
+	`);
+});
+
 test('HTML element, object notation, value from theme', () => {
 	const result = parseJavaScript(
 		`

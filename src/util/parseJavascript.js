@@ -46,6 +46,11 @@ function getValue(node, code, propsObjectName) {
 		return node.value;
 	}
 
+	// { width: SIZE }
+	if (node.type === 'Identifier') {
+		return node.name;
+	}
+
 	// { color: props => props.theme.colors.primary }
 	if (node.type === 'ArrowFunctionExpression' && node.params.length === 1) {
 		return getThemeToken(node.body, code, node.params[0].name);
