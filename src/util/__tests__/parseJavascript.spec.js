@@ -44,6 +44,7 @@ const BoldParagraph = styled(Text)({
 		Array [
 		  Object {
 		    "component": "Text",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
 		        "name": "font-weight",
@@ -69,6 +70,7 @@ const PrimaryHeading = styled.h1({
 		Array [
 		  Object {
 		    "component": "h1",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
 		        "name": "color",
@@ -94,6 +96,7 @@ const PrimaryHeading = styled.h1(props => ({
 		Array [
 		  Object {
 		    "component": "h1",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
 		        "name": "color",
@@ -120,6 +123,7 @@ const BoldParagraph = styled.p\`
 		Array [
 		  Object {
 		    "component": "p",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
 		        "name": "font-weight",
@@ -149,6 +153,7 @@ const BoldParagraph = styled(Text)\`
 		Array [
 		  Object {
 		    "component": "Text",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
 		        "name": "font-weight",
@@ -174,6 +179,7 @@ const PrimaryHeading = styled.h1\`
 		Array [
 		  Object {
 		    "component": "h1",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
 		        "name": "color",
@@ -200,6 +206,7 @@ const BoldParagraph: any = styled.p\`
 		Array [
 		  Object {
 		    "component": "p",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
 		        "name": "font-weight",
@@ -231,6 +238,7 @@ const BoldParagraph = styled.p\`
 		Array [
 		  Object {
 		    "component": "p",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
 		        "name": "font-weight",
