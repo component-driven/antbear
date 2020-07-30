@@ -35,6 +35,7 @@
     "@babel/preset-flow": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
+    "css-shorthand-expand": "^1.2.0",
     "estree-walker": "^2.0.1",
     "glob": "^7.1.6",
     "kleur": "^4.0.2",

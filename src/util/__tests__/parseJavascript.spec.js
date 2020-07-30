@@ -15,10 +15,23 @@ const BoldParagraph = styled.p({
 		Array [
 		  Object {
 		    "component": "p",
+		    "filename": "test.js",
 		    "styles": Array [
 		      Object {
-		        "name": "margin",
-		        "value": 0,
+		        "name": "margin-top",
+		        "value": "0",
+		      },
+		      Object {
+		        "name": "margin-right",
+		        "value": "0",
+		      },
+		      Object {
+		        "name": "margin-bottom",
+		        "value": "0",
+		      },
+		      Object {
+		        "name": "margin-left",
+		        "value": "0",
 		      },
 		      Object {
 		        "name": "font-weight",

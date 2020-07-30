@@ -1,6 +1,7 @@
-const { kebabCase } = require('lodash');
+const { kebabCase, flatMap } = require('lodash');
 const { walk } = require('estree-walker');
 const { compile, serialize, middleware } = require('stylis');
+const cssShorthandExpand = require('css-shorthand-expand');
 const { compileCode } = require('./compileCode');
 
 function getComponentName(node) {
@@ -90,12 +91,12 @@ function getStyles(node, code) {
 }
 
 function getStylesFromObject(node, code, propsObjectName) {
-	return node.properties.map((prop) => {
-		return {
-			name: kebabCase(getPropertyKey(prop)),
-			value: getValue(prop.value, code, propsObjectName),
-		};
-	});
+	return flatMap(node.properties, (prop) =>
+		normalizeCssProp(
+			getPropertyKey(prop),
+			getValue(prop.value, code, propsObjectName)
+		)
+	);
 }
 
 function getStylesFromCss(css) {
@@ -105,12 +106,30 @@ function getStylesFromCss(css) {
 		middleware([
 			(element) => {
 				if (element.type === 'decl') {
-					styles.push({ name: element.props, value: element.children });
+					styles.push(...normalizeCssProp(element.props, element.children));
 				}
 			},
 		])
 	);
 	return styles;
+}
+
+function normalizeCssProp(rawProp, rawValue) {
+	const expanded = expandCssProp(kebabCase(rawProp), String(rawValue));
+	return Object.entries(expanded).map(([name, value]) => ({ name, value }));
+}
+
+function expandCssProp(rawProp, rawValue) {
+	try {
+		return (
+			cssShorthandExpand(rawProp, rawValue) || {
+				[rawProp]: rawValue,
+			}
+		);
+	} catch (err) {
+		console.warn(`Can’t expand CSS property {${rawProp}: ${rawValue}}:\n`, err);
+		return undefined;
+	}
 }
 
 function getCssFromQuasi({ quasi: { quasis, expressions } }, code) {
