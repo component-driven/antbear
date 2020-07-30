@@ -112,12 +112,15 @@ function getStyles(node, code) {
 }
 
 function getStylesFromObject(node, code, propsObjectName) {
-	return flatMap(node.properties, (prop) =>
-		normalizeCssProp(
-			getPropertyKey(prop),
-			getValue(prop.value, code, propsObjectName)
-		)
-	);
+	return flatMap(node.properties, (prop) => {
+		return prop.value.type === 'ObjectExpression'
+			? // Unwrap nested styles
+			  getStylesFromObject(prop.value, code, propsObjectName)
+			: normalizeCssProp(
+					getPropertyKey(prop),
+					getValue(prop.value, code, propsObjectName)
+			  );
+	});
 }
 
 function getStylesFromCss(css) {

@@ -69,6 +69,34 @@ const BoldParagraph = styled(Text)({
 	`);
 });
 
+test('custom component, object notation, nested styles', () => {
+	const result = parseJavaScript(
+		`
+import styled from 'styled-components';
+const BoldParagraph = styled(Text)({
+	'&:hover': {
+		fontWeight: 'bold'
+	}
+})
+	`,
+		'test.js'
+	);
+	expect(result).toMatchInlineSnapshot(`
+		Array [
+		  Object {
+		    "component": "Text",
+		    "filename": "test.js",
+		    "styles": Array [
+		      Object {
+		        "name": "font-weight",
+		        "value": "bold",
+		      },
+		    ],
+		  },
+		]
+	`);
+});
+
 test('HTML element, object notation, variable', () => {
 	const result = parseJavaScript(
 		`
