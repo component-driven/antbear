@@ -149,7 +149,7 @@ module.exports.parseJavaScript = function (source, filename) {
 				) {
 					const component = (args[0] && args[0].name) || getComponentName(node);
 					const styles = getStyles(node, source);
-					instances.push({ component, styles });
+					instances.push({ filename, component, styles });
 				}
 			}
 		},

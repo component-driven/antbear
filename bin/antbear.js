@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 
+const path = require('path');
 const minimist = require('minimist');
 const glob = require('glob');
 const kleur = require('kleur');
@@ -28,11 +29,12 @@ if (patterns.length > 0) {
 	const files = flatMap(patterns, (pattern) => glob.sync(pattern));
 	const instances = antbear(files);
 
-	instances.forEach(({ component, styles }) => {
-		console.log(kleur.bold(component));
+	instances.forEach(({ filename, component, styles }) => {
+		console.log(kleur.bold(component), path.basename(filename));
 		styles.forEach((style) => {
 			console.log('   ', kleur.cyan(style.name), kleur.magenta(style.value));
 		});
+		console.log();
 	});
 } else {
 	commandHelp();
