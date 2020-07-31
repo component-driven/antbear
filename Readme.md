@@ -1,6 +1,6 @@
 # [WIP] antbear
 
-[![Build Status](https://travis-ci.org/sapegin/antbear.svg)](https://travis-ci.org/sapegin/antbear) [![npm](https://img.shields.io/npm/v/antbear.svg)](https://www.npmjs.com/package/antbear)
+[![Build Status](https://travis-ci.org/component-driven/antbear.svg)](https://travis-ci.org/component-driven/antbear) [![npm](https://img.shields.io/npm/v/antbear.svg)](https://www.npmjs.com/package/antbear)
 
 Analyze custom styles usage in the project.
 
@@ -46,7 +46,7 @@ npx antbear 'src/**/*.{js,ts,tsx}'
 
 ## Changelog
 
-The changelog can be found on the [Releases page](https://github.com/sapegin/antbear/releases).
+The changelog can be found on the [Releases page](https://github.com/component-driven/antbear/releases).
 
 ## Contributing
 
@@ -54,6 +54,6 @@ Everyone is welcome to contribute. Please take a moment to review the [contribut
 
 ## Authors and license
 
-[Artem Sapegin](https://sapegin.me) and [contributors](https://github.com/sapegin/antbear/graphs/contributors).
+[Artem Sapegin](https://sapegin.me) and [contributors](https://github.com/component-driven/antbear/graphs/contributors).
 
 MIT License, see the included [License.md](License.md) file.

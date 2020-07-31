@@ -6,8 +6,8 @@
     "name": "Artem Sapegin",
     "url": "https://sapegin.me"
   },
-  "homepage": "https://github.com/sapegin/antbear",
-  "repository": "sapegin/antbear",
+  "homepage": "https://github.com/component-driven/antbear",
+  "repository": "component-driven/antbear",
   "license": "MIT",
   "engines": {
     "node": ">=10"
