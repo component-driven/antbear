@@ -13,7 +13,7 @@ By analyzing custom styles usage in the application and finding which componentâ
 - [x] JavaScript files
 - [x] TypeScript and Flow files
 - [x] styled-components and Emotion (`styled` factory)
-- [ ] `sx` and `css` props ([Theme UI](https://theme-ui.com/sx-prop)
+- [ ] `sx` and `css` props ([Theme UI](https://theme-ui.com/sx-prop))
 - [ ] CSS
 - [ ] CSS Modules
 - [ ] Sass
