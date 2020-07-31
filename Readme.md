@@ -32,6 +32,18 @@ By analyzing custom styles usage in the application and finding which componentâ
 - [x] Components and props
 - [x] Components, props and values
 
+## Installation
+
+```
+npm install antbear
+```
+
+### Usage
+
+```
+npx antbear 'src/**/*.{js,ts,tsx}'
+```
+
 ## Changelog
 
 The changelog can be found on the [Releases page](https://github.com/sapegin/antbear/releases).
