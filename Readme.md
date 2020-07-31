@@ -1,5 +1,7 @@
 # [WIP] antbear
 
+[![Build Status](https://travis-ci.org/sapegin/antbear.svg)](https://travis-ci.org/sapegin/antbear) [![npm](https://img.shields.io/npm/v/antbear.svg)](https://www.npmjs.com/package/antbear)
+
 Analyze custom styles usage in the project.
 
 ## Motivation
