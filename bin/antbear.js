@@ -59,7 +59,12 @@ function printMetric(value, caption) {
 }
 
 function printObject(object, caption) {
-	const keyColWidth = longest(Object.keys(object)).length;
+	const keys = Object.keys(object);
+	if (keys.length === 0) {
+		return;
+	}
+
+	const keyColWidth = longest(keys).length;
 	const valueColWidth = longest(Object.values(object)).length;
 	const rows = sortBy(Object.entries(object), ([, value]) => value).reverse();
 
