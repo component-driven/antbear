@@ -2,6 +2,12 @@
 
 Analyze custom styles usage in the project.
 
+## Motivation
+
+We shouldn’t use custom styles on the application level. We should compose our user interfaces from primitive components. Sometimes, a component library isn’t flexible enough to make it possible, especially when it’s young.
+
+By analyzing custom styles usage in the application and finding which component’s styles developers override the most, we can find what’s missing in the component library: missing component props, missing design tokens, and so on.
+
 ## Changelog
 
 The changelog can be found on the [Releases page](https://github.com/sapegin/antbear/releases).
