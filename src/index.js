@@ -8,7 +8,7 @@ const {
 	getValuesStats,
 	getColorsStats,
 	getSpacingStats,
-} = require('../src/util/calculateStats');
+} = require('./stats');
 
 function getInstances(files) {
 	return flatMap(files, (filename) => {

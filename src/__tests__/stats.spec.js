@@ -1,4 +1,4 @@
-const { getComponentsStats } = require('../calculateStats');
+const { getComponentsStats } = require('../stats');
 
 test('getComponentsStats', () => {
 	const result = getComponentsStats([
