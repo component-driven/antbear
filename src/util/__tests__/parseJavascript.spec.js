@@ -338,6 +338,34 @@ const BoldParagraph = styled(Text)\`
 	`);
 });
 
+test('HTML element, template literal, nested styles', () => {
+	const result = parseJavaScript(
+		`
+import styled from 'styled-components';
+const BoldParagraph = styled.p\`
+	&:hover {
+		color: salmon;
+	}
+\`
+	`,
+		'test.js'
+	);
+	expect(result).toMatchInlineSnapshot(`
+		Array [
+		  Object {
+		    "component": "p",
+		    "filename": "test.js",
+		    "styles": Array [
+		      Object {
+		        "name": "color",
+		        "value": "salmon",
+		      },
+		    ],
+		  },
+		]
+	`);
+});
+
 test('HTML element, template literal, value from theme', () => {
 	const result = parseJavaScript(
 		`

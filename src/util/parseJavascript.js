@@ -134,13 +134,21 @@ function getStylesFromCss(css) {
 		compile(css),
 		middleware([
 			(element) => {
-				if (element.type === 'decl') {
-					styles.push(...normalizeCssProp(element.props, element.children));
-				}
+				styles.push(...getStylesFromCssElement(element));
 			},
 		])
 	);
 	return styles;
+}
+
+function getStylesFromCssElement(element) {
+	if (element.type === 'decl') {
+		return normalizeCssProp(element.props, element.children);
+	} else if (element.type === 'rule') {
+		return flatMap(element.children, getStylesFromCssElement);
+	} else {
+		return [];
+	}
 }
 
 function normalizeCssProp(rawProp, rawValue) {
@@ -194,6 +202,8 @@ function mergeQuasi({ quasis, expressions }, code) {
 // Don’t keep complex expression because they break Stylis,
 // and not very useful to analyze anyway
 function normalizeExpression(value) {
+	// TODO: : or multiline
+	// TODO: Unwrap `
 	return value.match(/[:`]/) ? EXPRESSION_PLACEHOLDER : `(${value})`;
 }
 
