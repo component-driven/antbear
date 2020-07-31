@@ -2,6 +2,7 @@ const fs = require('fs');
 const { flatMap } = require('lodash');
 const { parseJavaScript } = require('./util/parseJavaScript');
 const {
+	getStylesPerModule,
 	getElementsStats,
 	getComponentsStats,
 	getPropsStats,
@@ -18,6 +19,7 @@ function getInstances(files) {
 }
 
 module.exports = {
+	getStylesPerModule,
 	getInstances,
 	getElementsStats,
 	getComponentsStats,

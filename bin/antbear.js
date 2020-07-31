@@ -8,6 +8,7 @@ const kleur = require('kleur');
 const longest = require('longest');
 const { flatMap, sortBy } = require('lodash');
 const {
+	getStylesPerModule,
 	getInstances,
 	getElementsStats,
 	getComponentsStats,
@@ -50,6 +51,11 @@ function printInstances(instances) {
 	});
 }
 
+function printMetric(value, caption) {
+	console.log(kleur.underline(caption), value.toFixed(2));
+	console.log();
+}
+
 function printObject(object, caption) {
 	const keyColWidth = longest(Object.keys(object)).length;
 	const valueColWidth = longest(Object.values(object)).length;
@@ -77,6 +83,10 @@ if (patterns.length > 0) {
 	const files = flatMap(patterns, (pattern) => glob.sync(pattern));
 	const instances = getInstances(files);
 
+	printMetric(
+		getStylesPerModule(instances, files.length),
+		'Custom styles per module'
+	);
 	printObject(getElementsStats(instances), 'Overridden elements');
 	printObject(getComponentsStats(instances), 'Overridden components');
 	printObject(getPropsStats(instances), 'Properties');

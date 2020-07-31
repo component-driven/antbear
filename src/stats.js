@@ -27,6 +27,11 @@ const isComponent = (name) => name.match(/^[A-Z]/);
 const getAllStyles = (instances) =>
 	flatMap(instances, (instance) => instance.styles);
 
+module.exports.getStylesPerModule = function (instances, numberOfFiles) {
+	const styles = getAllStyles(instances);
+	return styles.length / numberOfFiles;
+};
+
 module.exports.getElementsStats = function (instances) {
 	const elementsOnly = instances.filter(
 		(instance) => !isComponent(instance.component)

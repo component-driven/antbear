@@ -18,6 +18,16 @@ By analyzing custom styles usage in the application and finding which componentâ
 - [ ] CSS Modules
 - [ ] Sass
 
+## Statistics
+
+- [x] Custom styles per module
+- [x] Overridden elements
+- [x] Overridden components
+- [x] CSS properties
+- [x] CSS values
+- [x] Custom colors (very basic, needs more work)
+- [x] Custom spacing
+
 ## Changelog
 
 The changelog can be found on the [Releases page](https://github.com/sapegin/antbear/releases).
