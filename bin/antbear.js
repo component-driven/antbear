@@ -17,18 +17,21 @@ function commandHelp() {
 	console.log(
 		[
 			kleur.underline('Usage'),
-			['   ', kleur.bold(getBinaryName()), kleur.yellow('<PATTERN>')].join(' '),
+			[
+				'   ',
+				kleur.bold(getBinaryName()),
+				kleur.yellow('[OPTIONS]'),
+				kleur.cyan('<PATTERN>'),
+			].join(' '),
+			kleur.underline('Options'),
+			['   ', kleur.yellow('--verbose'), 'Print additional information'].join(
+				' '
+			),
 		].join('\n\n')
 	);
 }
 
-const argv = minimist(process.argv.slice(2));
-const patterns = argv._;
-
-if (patterns.length > 0) {
-	const files = flatMap(patterns, (pattern) => glob.sync(pattern));
-	const instances = antbear(files);
-
+function printInstances(instances) {
 	instances.forEach(({ filename, component, styles }) => {
 		console.log(kleur.bold(component), path.basename(filename));
 		styles.forEach((style) => {
@@ -36,6 +39,19 @@ if (patterns.length > 0) {
 		});
 		console.log();
 	});
+}
+
+const argv = minimist(process.argv.slice(2));
+const patterns = argv._;
+const isVerbose = argv.verbose;
+
+if (patterns.length > 0) {
+	const files = flatMap(patterns, (pattern) => glob.sync(pattern));
+	const instances = antbear(files);
+
+	if (isVerbose) {
+		printInstances(instances);
+	}
 } else {
 	commandHelp();
 }
