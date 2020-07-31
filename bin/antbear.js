@@ -94,15 +94,15 @@ if (patterns.length > 0) {
 		getStylesPerModule(instances, files.length),
 		'Custom styles per module'
 	);
-	printObject(getElementsStats(instances), 'Overridden elements');
-	printObject(getComponentsStats(instances), 'Overridden components');
 	printObject(getColorsStats(instances), 'Custom colors');
 	printObject(getSpacingStats(instances), 'Custom spacing');
-	printObject(getComponentsPropsStats(instances), 'Components and props');
 	printObject(
 		getComponentsPropsValuesStats(instances),
 		'Components, props and values'
 	);
+	printObject(getComponentsPropsStats(instances), 'Components and props');
+	printObject(getComponentsStats(instances), 'Overridden components');
+	printObject(getElementsStats(instances), 'Overridden elements');
 	printObject(getPropsStats(instances), 'Properties');
 	printObject(getValuesStats(instances), 'Values');
 
