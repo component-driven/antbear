@@ -81,3 +81,35 @@ module.exports.getSpacingStats = function (instances) {
 		return spacings;
 	}, {});
 };
+
+module.exports.getComponentsPropsStats = function (instances) {
+	return instances.reduce((result, { component, styles }) => {
+		if (!isComponent(component)) {
+			return result;
+		}
+		styles.forEach(({ name }) => {
+			const key = `<${component}> ${name}`;
+			if (!result[key]) {
+				result[key] = 0;
+			}
+			result[key]++;
+		});
+		return result;
+	}, {});
+};
+
+module.exports.getComponentsPropsValuesStats = function (instances) {
+	return instances.reduce((result, { component, styles }) => {
+		if (!isComponent(component)) {
+			return result;
+		}
+		styles.forEach(({ name, value }) => {
+			const key = `<${component}> ${name} = ${value}`;
+			if (!result[key]) {
+				result[key] = 0;
+			}
+			result[key]++;
+		});
+		return result;
+	}, {});
+};

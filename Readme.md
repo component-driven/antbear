@@ -27,6 +27,8 @@ By analyzing custom styles usage in the application and finding which componentâ
 - [x] CSS values
 - [x] Custom colors (very basic, needs more work)
 - [x] Custom spacing
+- [x] Components and props
+- [x] Components, props and values
 
 ## Changelog
 

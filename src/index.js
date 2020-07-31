@@ -9,6 +9,8 @@ const {
 	getValuesStats,
 	getColorsStats,
 	getSpacingStats,
+	getComponentsPropsStats,
+	getComponentsPropsValuesStats,
 } = require('./stats');
 
 function getInstances(files) {
@@ -27,4 +29,6 @@ module.exports = {
 	getValuesStats,
 	getColorsStats,
 	getSpacingStats,
+	getComponentsPropsStats,
+	getComponentsPropsValuesStats,
 };
