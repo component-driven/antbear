@@ -77,6 +77,11 @@ function getValue(node, code, propsObjectName) {
 		].join('');
 	}
 
+	// { margin: `${MARGIN}px` }
+	if (node.type === 'TemplateLiteral') {
+		return mergeQuasi(node, code);
+	}
+
 	console.warn('Can’t find value for', node);
 
 	return '';
@@ -104,7 +109,7 @@ function getStyles(node, code) {
 			}
 		});
 	} else if (node.type === 'TaggedTemplateExpression') {
-		const css = getCssFromQuasi(node, code);
+		const css = mergeQuasi(node.quasi, code);
 		styles.push(...getStylesFromCss(css));
 	}
 
@@ -176,13 +181,13 @@ function expandCssProp(rawProp, rawValue) {
 	}
 }
 
-function getCssFromQuasi({ quasi: { quasis, expressions } }, code) {
-	return quasis.reduce((css, quasi, index) => {
-		css += quasi.value.raw;
+function mergeQuasi({ quasis, expressions }, code) {
+	return quasis.reduce((result, quasi, index) => {
+		result += quasi.value.raw;
 		if (expressions[index]) {
-			css += getValue(expressions[index], code);
+			result += getValue(expressions[index], code);
 		}
-		return css;
+		return result;
 	}, '');
 }
 
