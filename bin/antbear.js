@@ -13,6 +13,8 @@ const {
 	getComponentsStats,
 	getPropsStats,
 	getValuesStats,
+	getColorsStats,
+	getSpacingStats,
 } = require('../src');
 
 function getBinaryName() {
@@ -79,6 +81,8 @@ if (patterns.length > 0) {
 	printObject(getComponentsStats(instances), 'Overridden components');
 	printObject(getPropsStats(instances), 'Properties');
 	printObject(getValuesStats(instances), 'Values');
+	printObject(getColorsStats(instances), 'Custom colors');
+	printObject(getSpacingStats(instances), 'Custom spacing');
 
 	if (isVerbose) {
 		printInstances(instances);
