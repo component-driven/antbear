@@ -8,6 +8,16 @@ We shouldn’t use custom styles on the application level. We should compose our
 
 By analyzing custom styles usage in the application and finding which component’s styles developers override the most, we can find what’s missing in the component library: missing component props, missing design tokens, and so on.
 
+## Supports
+
+- [x] JavaScript files
+- [x] TypeScript and Flow files
+- [x] styled-components and Emotion (`styled` factory)
+- [ ] `sx` and `css` props ([Theme UI](https://theme-ui.com/sx-prop)
+- [ ] CSS
+- [ ] CSS Modules
+- [ ] Sass
+
 ## Changelog
 
 The changelog can be found on the [Releases page](https://github.com/sapegin/antbear/releases).
