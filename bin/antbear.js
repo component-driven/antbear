@@ -91,8 +91,6 @@ if (patterns.length > 0) {
 	);
 	printObject(getElementsStats(instances), 'Overridden elements');
 	printObject(getComponentsStats(instances), 'Overridden components');
-	printObject(getPropsStats(instances), 'Properties');
-	printObject(getValuesStats(instances), 'Values');
 	printObject(getColorsStats(instances), 'Custom colors');
 	printObject(getSpacingStats(instances), 'Custom spacing');
 	printObject(getComponentsPropsStats(instances), 'Components and props');
@@ -100,6 +98,8 @@ if (patterns.length > 0) {
 		getComponentsPropsValuesStats(instances),
 		'Components, props and values'
 	);
+	printObject(getPropsStats(instances), 'Properties');
+	printObject(getValuesStats(instances), 'Values');
 
 	if (isVerbose) {
 		printInstances(instances);
